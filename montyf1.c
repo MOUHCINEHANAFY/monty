@@ -85,19 +85,22 @@ void pint(stack_t **head, unsigned int counter)
  * pop - removes the top element from the stack
  * @head: stack head
  * @counter: line_number
- * Return: no return
  */
 void pop(stack_t **head, unsigned int counter)
 {
-    stack_t *temp;
+	stack_t *tmp;
 
-    if (*head == NULL)
-    {
-        fprintf(stderr, "L%d: can't pop an empty stack\n", counter);
-        exit(EXIT_FAILURE);
-    }
+	if (*head == NULL)
+	{
+		fprintf(stderr, "L%d: can't pop an empty stack\n", counter);
+		fclose(montyf.file);
+		/* free content */
 
-    temp = *head;
-    *head = temp->next;
-    free(temp);
+		free(montyf.content);
+		free_stack(*head);
+		exit(EXIT_FAILURE);
+	}
+	tmp = *head;
+	*head = tmp->next;
+	free(tmp);
 }
