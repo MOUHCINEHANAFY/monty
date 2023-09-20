@@ -63,5 +63,5 @@ void pall(stack_t **head, unsigned int number);
 void addnode(stack_t **head, int n);
 void addqueue(stack_t **head, int n);
 void free_stack(stack_t *head);
-
+void pint(stack_t **head, unsigned int counter);
 #endif
