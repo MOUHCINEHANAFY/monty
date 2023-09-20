@@ -11,6 +11,7 @@ void free_stack(stack_t *head)
 	while (current)
 	{
 		stack_t *temp = current;
+
 		current = current->next;
 		free(temp);
 	}

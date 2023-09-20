@@ -8,23 +8,24 @@
  */
 void addnode(stack_t **head, int n)
 {
-    stack_t *new_node = malloc(sizeof(stack_t));
-    if (new_node == NULL)
-    {
-        fprintf(stderr, "Error: malloc failed\n");
-        exit(EXIT_FAILURE);
-    }
+	stack_t *new_node = malloc(sizeof(stack_t));
 
-    new_node->n = n;
-    new_node->next = *head;
-    new_node->prev = NULL;
+	if (new_node == NULL)
+	{
+	fprintf(stderr, "Error: malloc failed\n");
+	exit(EXIT_FAILURE);
+	}
 
-    if (*head)
-    {
-        (*head)->prev = new_node;
-    }
+	new_node->n = n;
+	new_node->next = *head;
+	new_node->prev = NULL;
 
-    *head = new_node;
+	if (*head)
+	{
+	(*head)->prev = new_node;
+	}
+
+	*head = new_node;
 }
 
 /**
@@ -35,29 +36,31 @@ void addnode(stack_t **head, int n)
  */
 void addqueue(stack_t **head, int n)
 {
-    stack_t *new_node = malloc(sizeof(stack_t));
-    if (new_node == NULL)
-    {
-        fprintf(stderr, "Error: malloc failed\n");
-        exit(EXIT_FAILURE);
-    }
+	stack_t *new_node = malloc(sizeof(stack_t));
 
-    new_node->n = n;
-    new_node->next = NULL;
-    new_node->prev = NULL;
+	if (new_node == NULL)
+	{
+	fprintf(stderr, "Error: malloc failed\n");
+	exit(EXIT_FAILURE);
+	}
 
-    if (*head == NULL)
-    {
-        *head = new_node;
-    }
-    else
-    {
-        stack_t *tail = *head;
-        while (tail->next)
-        {
-            tail = tail->next;
-        }
-        tail->next = new_node;
-        new_node->prev = tail;
-    }
+	new_node->n = n;
+	new_node->next = NULL;
+	new_node->prev = NULL;
+
+	if (*head == NULL)
+	{
+	*head = new_node;
+	}
+	else
+	{
+	stack_t *tail = *head;
+
+	while (tail->next)
+	{
+		tail = tail->next;
+	}
+	tail->next = new_node;
+	new_node->prev = tail;
+	}
 }

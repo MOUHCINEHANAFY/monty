@@ -4,67 +4,64 @@
  * pall - prints the stack
  * @head: pointer to the head of the stack
  * @counter: not used
- * Return: no return
  */
 void pall(stack_t **head, unsigned int counter)
 {
-    stack_t *current = *head;
+	stack_t *current = *head;
 
-    (void)counter;
-
-    while (current)
-    {
-        printf("%d\n", current->n);
-        current = current->next;
-    }
+	(void)counter;
+	while (current)
+	{
+	printf("%d\n", current->n);
+	current = current->next;
+	}
 }
 
 /**
  * push - add node to the stack
  * @head: pointer to the head of the stack
  * @counter: line number
- * Return: no return
  */
 void push(stack_t **head, unsigned int counter)
 {
-    int n = 0, j = 0;
+	int n = 0, j = 0;
 
-    if (!montyf.arg)
-    {
-        fprintf(stderr, "L%d: usage: push integer\n", counter);
-        fclose(montyf.file);
-        free(montyf.content);
-        free_stack(*head);
-        exit(EXIT_FAILURE);
-    }
+	if (!montyf.arg)
+	{
+	fprintf(stderr, "L%d: usage: push integer\n", counter);
+	fclose(montyf.file);
+	free(montyf.content);
+	free_stack(*head);
+	exit(EXIT_FAILURE);
+	}
 
-    if (montyf.arg[0] == '-')
-    {
-        j++;
-    }
+	if (montyf.arg[0] == '-')
+	{
+	j++;
+	}
 
-    while (montyf.arg[j] != '\0')
-    {
-        if (montyf.arg[j] < '0' || montyf.arg[j] > '9')
-        {
-            fprintf(stderr, "L%d: usage: push integer\n", counter);
-            fclose(montyf.file);
-            free(montyf.content);
-            free_stack(*head);
-            exit(EXIT_FAILURE);
-        }
-        n = (n * 10) + (montyf.arg[j] - '0');
-        j++;
-    }
+	while (montyf.arg[j] != '\0')
+	{
+	if (montyf.arg[j] < '0' || montyf.arg[j] > '9')
+	{
+	fprintf(stderr, "L%d: usage: push integer\n", counter);
+	fclose(montyf.file);
+	free(montyf.content);
+	free_stack(*head);
+	exit(EXIT_FAILURE);
+	}
+	n = (n * 10) + (montyf.arg[j] - '0');
+	j++;
+	}
 
-    if (montyf.lifi == 0)
-    {
-        addnode(head, n);
-    }
-    else
-    {
-        addqueue(head, n);
-    }
+	if (montyf.lifi == 0)
+	{
+	addnode(head, n);
+	}
+	else
+	{
+	addqueue(head, n);
+	}
 }
 
 /**
@@ -74,12 +71,12 @@ void push(stack_t **head, unsigned int counter)
  */
 void pint(stack_t **head, unsigned int counter)
 {
-    if (*head == NULL)
-    {
-        fprintf(stderr, "L%d: can't pint, stack empty\n", counter);
-        exit(EXIT_FAILURE);
-    }
-    printf("%d\n", (*head)->n);
+	if (*head == NULL)
+	{
+	fprintf(stderr, "L%d: can't pint, stack empty\n", counter);
+	exit(EXIT_FAILURE);
+	}
+	printf("%d\n", (*head)->n);
 }
 /**
  * pop - removes the top element from the stack
@@ -95,7 +92,6 @@ void pop(stack_t **head, unsigned int counter)
 		fprintf(stderr, "L%d: can't pop an empty stack\n", counter);
 		fclose(montyf.file);
 		/* free content */
-
 		free(montyf.content);
 		free_stack(*head);
 		exit(EXIT_FAILURE);
@@ -111,18 +107,18 @@ void pop(stack_t **head, unsigned int counter)
  */
 void swap(stack_t **head, unsigned int counter)
 {
-    int temp;
+	int temp;
 
-    if (*head == NULL || (*head)->next == NULL)
-    {
-        fprintf(stderr, "L%d: can't swap, stack too short\n", counter);
-        fclose(montyf.file);
+	if (*head == NULL || (*head)->next == NULL)
+	{
+	fprintf(stderr, "L%d: can't swap, stack too short\n", counter);
+	fclose(montyf.file);
 	free(montyf.content);
 	free_stack(*head);
-        exit(EXIT_FAILURE);
-    }
+	exit(EXIT_FAILURE);
+	}
 
-    temp = (*head)->n;
-    (*head)->n = (*head)->next->n;
-    (*head)->next->n = temp;
+	temp = (*head)->n;
+	(*head)->n = (*head)->next->n;
+	(*head)->next->n = temp;
 }
