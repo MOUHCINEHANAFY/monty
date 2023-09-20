@@ -71,4 +71,5 @@ void nop(stack_t **head, unsigned int counter);
 void sub(stack_t **head, unsigned int counter);
 void division(stack_t **head, unsigned int counter);
 void multiplication(stack_t **head, unsigned int counter);
+void mod(stack_t **head, unsigned int counter);
 #endif
