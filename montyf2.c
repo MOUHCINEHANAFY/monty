@@ -104,3 +104,28 @@ void division(stack_t **head, unsigned int counter)
 	*head = (*head)->next;
 	free(temp);
 }
+/**
+ * multiplication - multiplies top two elements
+ * @head: stack head
+ * @counter: line number
+ */
+void multiplication(stack_t **head, unsigned int counter)
+{
+	int result;
+	stack_t *temp;
+
+	if (*head == NULL || (*head)->next == NULL)
+	{
+	fprintf(stderr, "L%d: can't mul, stack too short\n", counter);
+	fclose(montyf.file);
+	/* free content */
+	free(montyf.content);
+	free_stack(*head);
+	exit(EXIT_FAILURE);
+	}
+	result = (*head)->next->n * (*head)->n;
+	(*head)->next->n = result;
+	temp = *head;
+	*head = (*head)->next;
+	free(temp);
+}
