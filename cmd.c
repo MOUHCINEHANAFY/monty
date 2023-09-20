@@ -15,7 +15,7 @@ int cmd(char *content, stack_t **stack, unsigned int counter, FILE *file)
 	instruction_t opst[] = {
 	{"push", push}, {"pall", pall}, {"pint", pint},
 	{"pop", pop}, {"swap", swap}, {"add", add},
-	{"nop", nop}, {"sub", sub}, {NULL, NULL}
+	{"nop", nop}, {"sub", sub}, {"div", division}, {NULL, NULL}
 	};
 
 	char *op = strtok(content, " \n\t");
