@@ -24,3 +24,13 @@ void add(stack_t **head, unsigned int counter)
     *head = temp->next;
     free(temp);
 }
+/**
+ *nop - The function of nothing
+ *@head: stack head
+ *@counter: line number
+ */
+void nop(stack_t **head, unsigned int counter)
+{
+	(void) counter;
+	(void) head;
+}
