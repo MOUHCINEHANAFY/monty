@@ -24,6 +24,7 @@ void add(stack_t **head, unsigned int counter)
     *head = temp->next;
     free(temp);
 }
+
 /**
  *nop - The function of nothing
  *@head: stack head
@@ -31,6 +32,15 @@ void add(stack_t **head, unsigned int counter)
  */
 void nop(stack_t **head, unsigned int counter)
 {
+    if (*head == NULL)
+	{
+		fclose(montyf.file);
+		/* free content */
+
+		free(montyf.content);
+		free_stack(*head);
+		exit(EXIT_FAILURE);
+	}
 	(void) counter;
 	(void) head;
 }
