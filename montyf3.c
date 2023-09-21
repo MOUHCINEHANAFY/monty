@@ -78,7 +78,6 @@ void pstr(stack_t **head, unsigned int counter)
 	temp = *head;
 	if (!temp)
 	{
-	putchar('\n');
 	fclose(montyf.file);
 	/* free content */
 	free(montyf.content);
