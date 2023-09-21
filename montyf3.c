@@ -34,3 +34,34 @@ void mod(stack_t **head, unsigned int counter)
 	*head = (*head)->next;
 	free(temp);
 }
+/**
+ * pchar - prints character stack top
+ * @head: stack head
+ * @counter: line number
+ */
+void pchar(stack_t **head, unsigned int counter)
+{
+	stack_t *temp;
+
+	temp = *head;
+	if (!temp)
+	{
+	fprintf(stderr, "L%d: can't pchar, stack empty\n", counter);
+	fclose(montyf.file);
+	/* free content */
+	free(montyf.content);
+	free_stack(*head);
+	exit(EXIT_FAILURE);
+	}
+	if (temp->n > 127 || temp->n < 0)
+	{
+	fprintf(stderr, "L%d: can't pchar, value out of range\n", counter);
+	fclose(montyf.file);
+	/* free content */
+	free(montyf.content);
+	free_stack(*head);
+	exit(EXIT_FAILURE);
+	}
+	putchar(temp->n);
+	putchar('\n');
+}
