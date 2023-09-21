@@ -65,3 +65,21 @@ void pchar(stack_t **head, unsigned int counter)
 	putchar(temp->n);
 	putchar('\n');
 }
+/**
+ * pstr - prints the string top of the stack,
+ * @head: stack head
+ * @counter: line number
+ */
+void pstr(stack_t **head, unsigned int counter)
+{
+	stack_t *temp;
+	(void)counter;
+
+	temp = *head;
+	while (temp && temp->n > 0 && temp->n <= 127)
+	{
+	putchar(temp->n);
+	temp = temp->next;
+	}
+	putchar('\n');
+}
