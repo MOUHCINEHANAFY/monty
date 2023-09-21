@@ -76,18 +76,34 @@ void pstr(stack_t **head, unsigned int counter)
 	(void)counter;
 
 	temp = *head;
-	if (!temp)
-	{
-	fclose(montyf.file);
-	/* free content */
-	free(montyf.content);
-	free_stack(*head);
-	exit(EXIT_FAILURE);
-	}
 	while (temp && temp->n > 0 && temp->n <= 127)
 	{
 	putchar(temp->n);
 	temp = temp->next;
 	}
 	putchar('\n');
+}
+/**
+ * rotl - rotates the stack to the top
+ * @head: stack head
+ * @counter: line number
+ */
+void rotl(stack_t **head, __attribute__((unused)) unsigned int counter)
+{
+	stack_t *temp = *head, *ptrnext;
+
+	if (*head == NULL || (*head)->next == NULL)
+	{
+	return;
+	}
+	ptrnext = (*head)->next;
+	ptrnext->prev = NULL;
+	while (temp->next != NULL)
+	{
+	temp = temp->next;
+	}
+	temp->next = *head;
+	(*head)->next = NULL;
+	(*head)->prev = temp;
+	(*head) = ptrnext;
 }
