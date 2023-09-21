@@ -76,6 +76,15 @@ void pstr(stack_t **head, unsigned int counter)
 	(void)counter;
 
 	temp = *head;
+	if (!temp)
+	{
+	putchar('\n');
+	fclose(montyf.file);
+	/* free content */
+	free(montyf.content);
+	free_stack(*head);
+	exit(EXIT_FAILURE);
+	}
 	while (temp && temp->n > 0 && temp->n <= 127)
 	{
 	putchar(temp->n);
